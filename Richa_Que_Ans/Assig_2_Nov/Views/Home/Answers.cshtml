@@ -1,0 +1,26 @@
+﻿@model Answers
+@{
+    ViewData["Title"] = "Answer Section";
+}
+
+<h1>@(ViewBag.question)</h1>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="AnswerText">Enter Answer</label>
+        <input asp-for="AnswerText" class="form-control">
+    </div>
+
+    <input type="hidden" asp-for=AnswerID />
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a asp-controller="Home" asp-action="Questions" class="btn btn-primary">Cancle</a>
+</form>
+
+    <h1>Answers</h1>
+    @foreach (Answers a in ViewBag.answers)
+    {
+        <p>@a.AnswerText</p>
+    }

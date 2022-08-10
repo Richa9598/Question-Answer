@@ -1,0 +1,53 @@
+﻿
+@model List<Question>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<h1>Questions</h1>
+<div class="row">
+    <div class="col-12 ">
+        <div class="list-group">
+            <a asp-controller="Home" asp-action="Questions" asp-route-type="All"
+               class="list-group-item
+                @(ViewBag.SelectedCategoryName == "All" ? "active" : "")">
+                All
+            </a>
+            @foreach (Category c in ViewBag.Categories)
+            {
+                <a asp-controller="Home" asp-action="Questions" asp-route-type="@c.Name"
+                   class="list-group-item
+                         @(ViewBag.SelectedCategoryName == c.Name ? "active" : "")">
+                    @c.Name
+                </a>
+            }
+        </div>
+    </div><br />
+    <div class="col-sm-12">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Questions</th>
+                    <th></th>
+            </thead>
+            <tbody>
+                @foreach (var question in Model)
+                {
+                    <tr>
+                        <td >@question.QuestionName</td>
+                        <td >
+                            <a  asp-controller="Answers" asp-action="Create"
+                               asp-route-qid="@question.QuestionID" asp-route-ques="@question.QuestionName">Add Answer</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <p>
+        <a class="col-sm-12"asp-action="Create" asp-controller="Questions">Add Question</a>
+    </p>
+</div>
+

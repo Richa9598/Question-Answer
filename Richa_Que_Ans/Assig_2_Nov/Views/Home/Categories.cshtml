@@ -1,0 +1,18 @@
+﻿@model List<Category>
+@{
+    ViewData["Title"] = "Categories Page";
+}
+
+<h2>All the Categories</h2>
+<table>
+    <tbody>
+        @{int i = 1;}
+        @foreach (var category in Model)
+        {
+            <tr>
+                <td>@i. @category.Name</td>
+            </tr>
+            { i++; }
+        }
+    </tbody>
+</table>

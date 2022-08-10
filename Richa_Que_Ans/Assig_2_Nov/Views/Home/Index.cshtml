@@ -1,0 +1,21 @@
+﻿@model List<Question>
+@{
+    ViewData["Title"] = "Question Page";
+}
+
+<div class="bg-light">
+    <h3 class="display-4">You question and we answer</h3>
+    
+</div>
+<h2>All available Questions</h2>
+<table class="table table-bordered table-striped">
+    <tbody>
+        @foreach (var question in Model)
+        {
+            <tr>
+                <td>@question.QuestionName</td>
+                <td>@question.QuestionDateAndTime</td>
+            </tr>
+        }
+    </tbody>
+</table>
